@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Recipes</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <h1>My Recipes</h1>
+    
+    <div class="recipe-list">
+        <% if (recipes.length === 0) { %>
+            <p>You don't have any recipes yet.</p>
+        <% } else { %>
+            <ul>
+                <% recipes.forEach(recipe => { %>
+                    <li>
+                        <a href="/edit-recipe/<%= recipe.id %>"><%= recipe.title %></a>
+                    </li>
+                <% }); %>
+            </ul>
+        <% } %>
+    </div>
+
+    <a class="back-link" href="/">Back to Home</a>
+</body>
+</html>

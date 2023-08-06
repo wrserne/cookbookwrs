@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Family Cookbook - Login</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        body {
+            color: black;
+        }
+        .error-message {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Login</h1>
+    <% if (errorMessage) { %> <!-- Check if errorMessage exists -->
+        <p class="error-message"><%= errorMessage %></p> <!-- Display error message if exists -->
+    <% } %>
+    <form action="/login" method="POST"> <!-- Add method="POST" here -->
+        <label for="username">Email:</label>
+        <input type="text" id="email" name="email" required>
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <br>
+        <button type="submit">Login</button>
+    </form>
+</body>
+</html>

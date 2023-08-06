@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Recipe</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <h1>Edit Recipe - <%= recipe.title %></h1>
+    <form class="recipe-form" action="/edit-recipe/<%= recipe.id %>" method="post">
+        <label for="title">Recipe Title:</label>
+        <input type="text" id="title" name="title" value="<%= recipe.title %>" required>
+
+        <label for="ingredients">Ingredients (separated by commas):</label>
+        <input type="text" id="ingredients" name="ingredients" value="<%= recipe.ingredients.join(', ') %>" required>
+
+        <label for="instructions">Instructions:</label>
+        <textarea id="instructions" name="instructions" rows="4" required><%= recipe.instructions.join('\n') %></textarea>
+
+        <label for="familySecrets">Family Secrets:</label>
+        <textarea id="familySecrets" name="familySecrets" rows="4"><%= recipe.family_secrets %></textarea>
+
+        <label for="type">Recipe Type:</label>
+        <select id="type" name="type">
+            <option value="Appetizer" <%= recipe.type === 'Appetizer' ? 'selected' : '' %>>Appetizer</option>
+            <option value="Breads" <%= recipe.type === 'Breads' ? 'selected' : '' %>>Breads</option>
+            <!-- Add other options here -->
+        </select>
+
+        <input class="submit-button" type="submit" value="Update Recipe">
+    </form>
+
+    <a class="back-link" href="/myRecipes">Back to My Recipes</a>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Family Cookbook</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    
+
+    <video id="video-background" autoplay muted loop>
+        <source src="/coverr-chef-preparing-a-dish-at-a-restaurant-6248-1080p.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <h1>The Donina Family Cookbook</h1>
+    <div class="login-bar">
+        <% if (authenticated) { %>
+            <p>Welcome, <%= userId %>! <a href="/logout">Logout</a></p>
+        <% } else { %>
+            <p>Please <a href="/login">Login</a> or <a href="/register">Register</a> to add recipes.</p>
+        <% } %>
+    </div>
+
+    <% if (authenticated) { %>
+        <!-- Display the link to add new recipes -->
+        <h2><a href="/addRecipe">Add a New Recipe</a></h2>
+        <% if (showAddRecipeLink) { %>
+            
+            <% if (showMyRecipesLink) { %>
+                <h2><a href="/myRecipes">My Recipes</a></h2>
+            <% } %>
+        <% } %>
+    <% } else { %>
+        
+
+
+<!-- My Recipes link -->
+
+   
+        
+    <% } %>
+
+    <!-- Carousels with Recipes -->
+    <div class="categories-carousel-container">
+        <% categories.forEach(function(category) { %>
+            <% if (categorizedRecipes[category].length > 0) { %>
+                <h2 style="text-align: center;"><%= category %></h2>
+                <div class="carousel-container">
+                    <div class="carousel <%= category.replace(/\s+/g, '-').toLowerCase() %>">
+                        <% categorizedRecipes[category].forEach(function(recipe, index) { %>
+                            <div class="carousel-item <%= index === 0 ? 'active' : '' %>">
+                                <a href="/recipe/<%= recipe.id %>">
+                                    <img src="/images/<%= recipe.image_url %>" alt="<%= recipe.title %>">
+                                    <div class="recipe-title"><%= recipe.title %></div>
+                                </a>
+                            </div>
+                        <% }); %>
+                    </div>
+                    <button class="carousel-button" onclick="scrollCarousel(this, '<%= category.replace(/\s+/g, '-').toLowerCase() %>', -1)">Previous</button>
+                    <button class="carousel-button" onclick="scrollCarousel(this, '<%= category.replace(/\s+/g, '-').toLowerCase() %>', 1)">Next</button>
+                </div>
+            <% } %>
+        <% }); %>
+        
+    </div>
+
+    <% if (!authenticated) { %>
+        <!-- Display login form for non-authenticated users -->
+        <h2>Login</h2>
+        <!-- ... Your existing login form code ... -->
+    <% } %>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>
