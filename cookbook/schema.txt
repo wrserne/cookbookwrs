@@ -1,0 +1,15 @@
+Users Table:
+- id (Primary Key, Auto-increment)
+- first_name (VARCHAR)
+- last_name (VARCHAR)
+- email (VARCHAR)
+- password (VARCHAR)
+
+Recipes Table:
+- id (Primary Key, Auto-increment)
+- title (VARCHAR)
+- ingredients (TEXT)
+- instructions (TEXT)
+- photo (VARCHAR)
+- makes (INTEGER)
+- user_id (Foreign Key, References Users Table)
