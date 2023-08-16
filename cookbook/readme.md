@@ -18,7 +18,7 @@ This is the repository for the Family Cookbook project. The project aims to crea
 1. Clone this repository to your local machine.
 2. Make sure you have Node.js and MySQL installed.
 3. Set up your MySQL database with the appropriate configurations.
-4. Update the database configurations in `app.js` to match your MySQL setup.
+4. Update the database configurations in `Homepage.js` to match your MySQL setup.
 5. Install project dependencies by running `npm install` in the project directory.
 6. Start the server with `node Homepage.js'
 
